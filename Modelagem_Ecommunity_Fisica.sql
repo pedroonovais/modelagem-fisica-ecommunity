@@ -28,8 +28,8 @@ CREATE TABLE tb_local (
     cep_local               VARCHAR2(9),
     cidade_local            VARCHAR2(50),
     estado_local            VARCHAR2(50),
-    latitude_local          NUMBER,
-    longitude_local         NUMBER
+    latitude_local          VARCHAR(50),
+    longitude_local         VARCHAR(50)
 );
 
 CREATE TABLE tb_login_usuario (
@@ -46,6 +46,7 @@ CREATE TABLE tb_materia (
     id_usuario  NUMBER NOT NULL,
     titulo_materia VARCHAR2(100),
     texto_materia  VARCHAR2(4000),
+    img_capa    VARCHAR2(4000),
     ativo       CHAR(1) CHECK (ativo IN ('S', 'N')),
     dt_criacao  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     dt_update   TIMESTAMP,
@@ -89,25 +90,25 @@ INSERT INTO tb_contato_usuario (id_usuario, telefone_usuario) VALUES (10, '11987
 
 -- Inserts para a tabela tb_locais
 INSERT INTO tb_local (nome_local, categoria, logradouro_numero_local, cep_local, cidade_local, estado_local, latitude_local, longitude_local) 
-VALUES ('Eco Loja', 'Loja Sustentável', 'Rua Verde, 45', '12345000', 'São Paulo', 'SP', -23.5505, -46.6333);
+VALUES ('Eco Loja', 'Loja Sustentável', 'Rua Verde, 45', '12345000', 'São Paulo', 'SP', '-23.5505', '-46.6333');
 INSERT INTO tb_local (nome_local, categoria, logradouro_numero_local, cep_local, cidade_local, estado_local, latitude_local, longitude_local) 
-VALUES ('Bike Park', 'Bicicletário', 'Avenida Azul, 300', '67890000', 'Rio de Janeiro', 'RJ', -22.9068, -43.1729);
+VALUES ('Bike Park', 'Bicicletário', 'Avenida Azul, 300', '67890000', 'Rio de Janeiro', 'RJ', '-22.9068', '-43.1729');
 INSERT INTO tb_local (nome_local, categoria, logradouro_numero_local, cep_local, cidade_local, estado_local, latitude_local, longitude_local) 
-VALUES ('Recicla Center', 'Ponto de Reciclagem', 'Rua Amarela, 100', '12345678', 'Belo Horizonte', 'MG', -19.9167, -43.9345);
+VALUES ('Recicla Center', 'Ponto de Reciclagem', 'Rua Amarela, 100', '12345678', 'Belo Horizonte', 'MG', '-19.9167', '-43.9345');
 INSERT INTO tb_local (nome_local, categoria, logradouro_numero_local, cep_local, cidade_local, estado_local, latitude_local, longitude_local) 
-VALUES ('Green Spot', 'Centro de Sustentabilidade', 'Rua dos Lírios, 500', '23456000', 'Curitiba', 'PR', -25.4296, -49.2714);
+VALUES ('Green Spot', 'Centro de Sustentabilidade', 'Rua dos Lírios, 500', '23456000', 'Curitiba', 'PR', '-25.4296', '-49.2714');
 INSERT INTO tb_local (nome_local, categoria, logradouro_numero_local, cep_local, cidade_local, estado_local, latitude_local, longitude_local) 
-VALUES ('EcoPoint', 'Ponto de Coleta', 'Avenida Flores, 150', '34567000', 'Porto Alegre', 'RS', -30.0346, -51.2177);
+VALUES ('EcoPoint', 'Ponto de Coleta', 'Avenida Flores, 150', '34567000', 'Porto Alegre', 'RS', '-30.0346', '-51.2177');
 INSERT INTO tb_local (nome_local, categoria, logradouro_numero_local, cep_local, cidade_local, estado_local, latitude_local, longitude_local) 
-VALUES ('Loja Verde', 'Loja Sustentável', 'Rua das Palmeiras, 200', '45678000', 'Fortaleza', 'CE', -3.7172, -38.5433);
+VALUES ('Loja Verde', 'Loja Sustentável', 'Rua das Palmeiras, 200', '45678000', 'Fortaleza', 'CE', '-3.7172', '-38.5433');
 INSERT INTO tb_local (nome_local, categoria, logradouro_numero_local, cep_local, cidade_local, estado_local, latitude_local, longitude_local) 
-VALUES ('Sustentabilidade em Ação', 'Centro de Reciclagem', 'Rua do Meio Ambiente, 50', '56789000', 'Salvador', 'BA', -12.9714, -38.5014);
+VALUES ('Sustentabilidade em Ação', 'Centro de Reciclagem', 'Rua do Meio Ambiente, 50', '56789000', 'Salvador', 'BA', '-12.9714', '-38.5014');
 INSERT INTO tb_local (nome_local, categoria, logradouro_numero_local, cep_local, cidade_local, estado_local, latitude_local, longitude_local) 
-VALUES ('Ponto Eco', 'Bicicletário', 'Avenida do Sol, 800', '67890100', 'Natal', 'RN', -5.7945, -35.2110);
+VALUES ('Ponto Eco', 'Bicicletário', 'Avenida do Sol, 800', '67890100', 'Natal', 'RN', '-5.7945', '-35.2110');
 INSERT INTO tb_local (nome_local, categoria, logradouro_numero_local, cep_local, cidade_local, estado_local, latitude_local, longitude_local) 
-VALUES ('Verde Vida', 'Loja Sustentável', 'Rua das Árvores, 90', '78901200', 'Recife', 'PE', -8.0476, -34.8770);
+VALUES ('Verde Vida', 'Loja Sustentável', 'Rua das Árvores, 90', '78901200', 'Recife', 'PE', '-8.0476', '-34.8770');
 INSERT INTO tb_local (nome_local, categoria, logradouro_numero_local, cep_local, cidade_local, estado_local, latitude_local, longitude_local) 
-VALUES ('Natureza Preservada', 'Ponto de Reciclagem', 'Rua do Verde, 320', '89012300', 'Maceió', 'AL', -9.6650, -35.7351);
+VALUES ('Natureza Preservada', 'Ponto de Reciclagem', 'Rua do Verde, 320', '89012300', 'Maceió', 'AL', '-9.6650', '-35.7351');
 
 -- Inserts para a tabela tb_login_usuario
 INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (1, 'alice.s', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
@@ -120,5 +121,77 @@ INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (7, 
 INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (8, 'hugo.m', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
 INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (9, 'isabela.t', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
 INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (10, 'joao.p', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
+
+-- Inserções na tabela `tb_materia`
+INSERT INTO tb_materia 
+(ID_MATERIA, ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
+VALUES
+(
+    1, 
+    1, 
+    'A Importância da Sustentabilidade', 
+    'Este artigo discute a importância de práticas sustentáveis no dia a dia, abordando desde o consumo consciente até o impacto ambiental.', 
+    '1.jpg', 
+    'S', 
+    TO_TIMESTAMP('2024-11-16 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), 
+    TO_TIMESTAMP('2024-11-16 08:00:00', 'YYYY-MM-DD HH24:MI:SS')
+);
+
+INSERT INTO tb_materia 
+(ID_MATERIA, ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
+VALUES
+(
+    2, 
+    2, 
+    'Tecnologia Verde', 
+    'A revolução tecnológica está ajudando a reduzir a pegada ecológica. Empresas estão investindo em inovações que permitem a produção mais eficiente e menos poluente.', 
+    '2.jpg', 
+    'S', 
+    TO_TIMESTAMP('2024-11-16 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), 
+    TO_TIMESTAMP('2024-11-16 09:00:00', 'YYYY-MM-DD HH24:MI:SS')
+);
+
+INSERT INTO tb_materia 
+(ID_MATERIA, ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
+VALUES
+(
+    3, 
+    1, 
+    'Energias Renováveis: O Futuro da Energia', 
+    'Com o aumento da demanda por energia, as fontes renováveis se tornam cada vez mais essenciais para garantir um futuro sustentável para o planeta.', 
+    '3.jpg', 
+    'S', 
+    TO_TIMESTAMP('2024-11-16 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), 
+    TO_TIMESTAMP('2024-11-16 10:00:00', 'YYYY-MM-DD HH24:MI:SS')
+);
+
+INSERT INTO tb_materia 
+(ID_MATERIA, ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
+VALUES
+(
+    4, 
+    1, 
+    'Educação Ambiental para as Novas Gerações', 
+    'A educação ambiental é essencial para criar uma nova geração de cidadãos conscientes e dispostos a agir em favor da preservação ambiental.', 
+    '4.jpg', 
+    'S', 
+    TO_TIMESTAMP('2024-11-16 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), 
+    TO_TIMESTAMP('2024-11-16 11:00:00', 'YYYY-MM-DD HH24:MI:SS')
+);
+
+INSERT INTO tb_materia 
+(ID_MATERIA, ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
+VALUES
+(
+    5, 
+    1, 
+    'Reciclagem e Reutilização: Salvando o Planeta', 
+    'A reciclagem é uma das soluções mais simples e eficazes para reduzir o desperdício e salvar recursos naturais. Este artigo explora a importância da reciclagem em nossas vidas.', 
+    '5.jpg', 
+    'S', 
+    TO_TIMESTAMP('2024-11-16 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 
+    TO_TIMESTAMP('2024-11-16 12:00:00', 'YYYY-MM-DD HH24:MI:SS')
+);
+
 
 COMMIT;
