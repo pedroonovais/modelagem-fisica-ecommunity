@@ -35,7 +35,7 @@ CREATE TABLE tb_local (
 CREATE TABLE tb_login_usuario (
     id_usuario    NUMBER NOT NULL,
     login_usuario VARCHAR2(20) NOT NULL,
-    senha_hash    VARCHAR2(255) NOT NULL,
+    senha    VARCHAR2(255) NOT NULL,
     PRIMARY KEY (id_usuario),
     CONSTRAINT tb_login_usuario_fk FOREIGN KEY (id_usuario)
         REFERENCES tb_usuario (id_usuario)
@@ -68,13 +68,15 @@ END;
 INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Alice Santos', 'alice.santos@email.com', 100, 'N');
 INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Bruno Silva', 'bruno.silva@email.com', 50, 'N');
 INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Carla Souza', 'carla.souza@email.com', 200, 'N');
-INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Daniel Costa', 'daniel.costa@email.com', 150, 'S');
+INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Daniel Costa', 'daniel.costa@email.com', 150, 'N');
 INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Eduarda Dias', 'eduarda.dias@email.com', 80, 'N');
 INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Felipe Martins', 'felipe.martins@email.com', 300, 'N');
 INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Gabriela Alves', 'gabriela.alves@email.com', 120, 'N');
 INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Hugo Mendes', 'hugo.mendes@email.com', 75, 'N');
-INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Isabela Teixeira', 'isabela.teixeira@email.com', 130, 'S');
+INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Isabela Teixeira', 'isabela.teixeira@email.com', 130, 'N');
 INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('João Pinto', 'joao.pinto@email.com', 110, 'N');
+INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Pedro Novais', 'pedro.novais@gmail.com', 110, 'S');
+INSERT INTO tb_usuario (nome_usuario, email_usuario, qtd_pontos, admin) VALUES ('Rodrigo Rios', 'rodrigo.rios@gmail.com', 110, 'S');
 
 -- Inserts para a tabela tb_contato_usuario
 INSERT INTO tb_contato_usuario (id_usuario, telefone_usuario) VALUES (1, '11987654321');
@@ -87,6 +89,8 @@ INSERT INTO tb_contato_usuario (id_usuario, telefone_usuario) VALUES (7, '119876
 INSERT INTO tb_contato_usuario (id_usuario, telefone_usuario) VALUES (8, '11987658765');
 INSERT INTO tb_contato_usuario (id_usuario, telefone_usuario) VALUES (9, '11987657654');
 INSERT INTO tb_contato_usuario (id_usuario, telefone_usuario) VALUES (10, '11987656543');
+INSERT INTO tb_contato_usuario (id_usuario, telefone_usuario) VALUES (11, '11987656545');
+INSERT INTO tb_contato_usuario (id_usuario, telefone_usuario) VALUES (12, '11987656546');
 
 -- Inserts para a tabela tb_locais
 INSERT INTO tb_local (nome_local, categoria, logradouro_numero_local, cep_local, cidade_local, estado_local, latitude_local, longitude_local) 
@@ -111,23 +115,24 @@ INSERT INTO tb_local (nome_local, categoria, logradouro_numero_local, cep_local,
 VALUES ('Natureza Preservada', 'Ponto de Reciclagem', 'Rua do Verde, 320', '89012300', 'Maceió', 'AL', '-9.6650', '-35.7351');
 
 -- Inserts para a tabela tb_login_usuario
-INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (1, 'alice.s', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
-INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (2, 'bruno.s', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
-INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (3, 'carla.s', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
-INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (4, 'daniel.c', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
-INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (5, 'eduarda.d', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
-INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (6, 'felipe.m', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
-INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (7, 'gabriela.a', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
-INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (8, 'hugo.m', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
-INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (9, 'isabela.t', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
-INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha_hash) VALUES (10, 'joao.p', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
+INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha) VALUES (1, 'alice.s', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
+INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha) VALUES (2, 'bruno.s', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
+INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha) VALUES (3, 'carla.s', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
+INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha) VALUES (4, 'daniel.c', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
+INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha) VALUES (5, 'eduarda.d', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
+INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha) VALUES (6, 'felipe.m', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
+INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha) VALUES (7, 'gabriela.a', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
+INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha) VALUES (8, 'hugo.m', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
+INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha) VALUES (9, 'isabela.t', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
+INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha) VALUES (10, 'joao.p', '$2a$10$yvpHLTc92BIX9ZT4XOaRleP4Ve2EZkFw79erIr5LsDX7Bm9/Y6nB2');
+INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha) VALUES (11, 'pedro.novais', 'Pedro.novais@12');
+INSERT INTO tb_login_usuario (id_usuario, login_usuario, senha) VALUES (12, 'rodrigo.rios', 'Rodrigo.rios@12');
 
 -- Inserções na tabela `tb_materia`
 INSERT INTO tb_materia 
-(ID_MATERIA, ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
+(ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
 VALUES
 (
-    1, 
     1, 
     'A Importância da Sustentabilidade', 
     'Este artigo discute a importância de práticas sustentáveis no dia a dia, abordando desde o consumo consciente até o impacto ambiental.', 
@@ -138,10 +143,9 @@ VALUES
 );
 
 INSERT INTO tb_materia 
-(ID_MATERIA, ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
+(ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
 VALUES
-(
-    2, 
+( 
     2, 
     'Tecnologia Verde', 
     'A revolução tecnológica está ajudando a reduzir a pegada ecológica. Empresas estão investindo em inovações que permitem a produção mais eficiente e menos poluente.', 
@@ -152,10 +156,9 @@ VALUES
 );
 
 INSERT INTO tb_materia 
-(ID_MATERIA, ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
+(ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
 VALUES
 (
-    3, 
     1, 
     'Energias Renováveis: O Futuro da Energia', 
     'Com o aumento da demanda por energia, as fontes renováveis se tornam cada vez mais essenciais para garantir um futuro sustentável para o planeta.', 
@@ -166,10 +169,9 @@ VALUES
 );
 
 INSERT INTO tb_materia 
-(ID_MATERIA, ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
+(ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
 VALUES
-(
-    4, 
+( 
     1, 
     'Educação Ambiental para as Novas Gerações', 
     'A educação ambiental é essencial para criar uma nova geração de cidadãos conscientes e dispostos a agir em favor da preservação ambiental.', 
@@ -180,10 +182,9 @@ VALUES
 );
 
 INSERT INTO tb_materia 
-(ID_MATERIA, ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
+(ID_USUARIO, TITULO_MATERIA, TEXTO_MATERIA, IMG_CAPA, ATIVO, DT_CRIACAO, DT_UPDATE) 
 VALUES
 (
-    5, 
     1, 
     'Reciclagem e Reutilização: Salvando o Planeta', 
     'A reciclagem é uma das soluções mais simples e eficazes para reduzir o desperdício e salvar recursos naturais. Este artigo explora a importância da reciclagem em nossas vidas.', 
